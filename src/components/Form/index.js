@@ -5,7 +5,7 @@ import DropdownList from '../DropdownList';
 import TextField from '../TextField';
 import './Form.css';
 
-const Form = () => {
+const Form = (props) => {
 
     const times = [
         'Programação',
@@ -24,7 +24,12 @@ const Form = () => {
 
     const onSave = (event) => {
         event.preventDefault()
-        console.log('Form foi submetido => ' + nome, cargo, imagem, time)
+        props.onCollaboratorRegistered({
+            nome,
+            cargo,
+            imagem,
+            time
+        })
     }
 
     return (
