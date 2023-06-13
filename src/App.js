@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Banner from './components/Banner';
 import Form from './components/Form';
 import Time from './components/Time';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -46,15 +47,22 @@ function App() {
   const [collaborators, setCollaborators] = useState([]);
 
   const onCollaboratorAdd = (collaborator) => {
-    console.log(collaborator)
+    debugger
     setCollaborators([...collaborators, collaborator])
   }
 
   return (
     <div className="App">
         <Banner />
-        <Form onCollaboratorRegistered={collaborator => onCollaboratorAdd(collaborator)} />
-        {times.map(time => <Time key={time.nome} nome={time.nome} primaryColor={time.primaryColor} secondaryColor={time.secondaryColor} />)}
+        <Form times={times.map(time => time.nome)} onCollaboratorRegistered={collaborator => onCollaboratorAdd(collaborator)} />
+        {times.map(time => <Time 
+          key={time.nome}
+          nome={time.nome}
+          primaryColor={time.primaryColor}
+          secondaryColor={time.secondaryColor}
+          collaborators={collaborators.filter(collaborator => collaborator.time === time.nome)}
+        />)}
+        <Footer />
     </div>
   );
 }

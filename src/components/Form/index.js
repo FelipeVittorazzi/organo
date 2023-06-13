@@ -7,16 +7,6 @@ import './Form.css';
 
 const Form = (props) => {
 
-    const times = [
-        'Programação',
-        'Front-End',
-        'Data Science',
-        'Devops',
-        'UX e Design',
-        'Mobile',
-        'Inovação e Gestão'
-    ]
-
     const [nome, setNome] = useState('');
     const [cargo, setCargo] = useState('');
     const [imagem, setImagem] = useState('');
@@ -30,6 +20,10 @@ const Form = (props) => {
             imagem,
             time
         })
+        setNome('')
+        setCargo('')
+        setImagem('')
+        setTime('')
     }
 
     return (
@@ -59,7 +53,8 @@ const Form = (props) => {
                 <DropdownList
                     obrigatorio={true}
                     label="Time"
-                    itens={times}
+                    itens={props.times}
+                    value={time}
                     onTypeded={value => setTime(value)}
                 />
                 <Button text="Criar Card" />

@@ -12,7 +12,9 @@ const DropdownList = (props) => {
             <select
                 onChange={onTyped}
                 required={props.obrigatorio}
+                value={props.value}
             >
+                <option value=""></option>
                 {props.itens.map(item => {
                     return <option key={item}>{item}</option>
                 })}

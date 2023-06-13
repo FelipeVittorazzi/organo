@@ -10,6 +10,7 @@ const TextField = (props) => {
         <div className="text-field">
             <label>{props.label}</label>
             <input 
+                value={props.value}
                 onChange={onTyped}
                 required={props.obrigatorio} 
                 placeholder={props.placeholder}
